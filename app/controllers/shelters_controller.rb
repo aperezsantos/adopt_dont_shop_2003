@@ -8,6 +8,18 @@ class SheltersController < ApplicationController
   end
 
   def new
-    
+
+  end
+
+  def create
+    @shelter = Shelter.new(shelter_params)
+    @shelter.save
+
+    redirect_to "/shelters"
+  end
+
+  private
+  def shelter_params
+    params.permit(:name, :address, :city, :state, :zip)
   end
 end
