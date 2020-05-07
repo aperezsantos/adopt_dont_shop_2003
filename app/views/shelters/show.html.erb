@@ -2,4 +2,6 @@
 <p>Address: <%= @shelter.address %></p>
 <p>City: <%= @shelter.city %></p>
 <p>State: <%= @shelter.state %></p>
-<p>Zip: <%= @shelter.zip %></p>
+<p>Zip: <%= @shelter.zip %></p></br>
+
+<%= link_to "Update Shelter", "/shelters/#{@shelter.id}/edit" %>
