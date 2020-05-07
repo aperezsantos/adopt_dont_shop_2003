@@ -40,8 +40,29 @@ RSpec.describe "Shelter Show Page" do
       expect(page).to have_content("Updated Shelter State")
       expect(page).to have_content("Updated Shelter Zip")
     end
+
+    it "I can click a link that deletes that shelter, taking me to the index page" do
+      shelter = Shelter.create(name: "Cat Care Society", address: "5787 W 6th Ave", city: "Lakewood", state: "CO", zip: "80214")
+
+      visit "/shelters/#{shelter.id}"
+
+      click_link "Delete Shelter"
+
+      expect(current_path).to eq("/shelters")
+      expect(page).to_not have_content(shelter.name)
+    end
   end
 end
+
+# User Story 6, Shelter Delete
+#
+# As a visitor
+# When I visit a shelter show page
+# Then I see a link to delete the shelter
+# When I click the link "Delete Shelter"
+# Then a 'DELETE' request is sent to '/shelters/:id',
+# the shelter is deleted,
+# and I am redirected to the shelter index page where I no longer see this shelter
 
 # User Story 5, Shelter Update
 #
