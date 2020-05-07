@@ -40,35 +40,16 @@ RSpec.describe "Shelter Show Page" do
       expect(page).to have_content("Updated Shelter State")
       expect(page).to have_content("Updated Shelter Zip")
     end
+
+    it "I can click a link that deletes that shelter, taking me to the index page" do
+      shelter = Shelter.create(name: "Cat Care Society", address: "5787 W 6th Ave", city: "Lakewood", state: "CO", zip: "80214")
+
+      visit "/shelters/#{shelter.id}"
+
+      click_link "Delete Shelter"
+
+      expect(current_path).to eq("/shelters")
+      expect(page).to_not have_content(shelter.name)
+    end
   end
 end
-
-# User Story 5, Shelter Update
-#
-# As a visitor
-# When I visit a shelter show page
-# Then I see a link to update the shelter "Update Shelter"
-# When I click the link "Update Shelter"
-# Then I am taken to '/shelters/:id/edit' where I  see a form to edit the shelter's data including:
-# - name
-# - address
-# - city
-# - state
-# - zip
-# When I fill out the form with updated information
-# And I click the button to submit the form
-# Then a `PATCH` request is sent to '/shelters/:id',
-# the shelter's info is updated,
-# and I am redirected to the Shelter's Show page where I see the shelter's updated info
-
-
-# User Story 3, Shelter Show
-#
-# As a visitor
-# When I visit '/shelters/:id'
-# Then I see the shelter with that id including the shelter's:
-# - name
-# - address
-# - city
-# - state
-# - zip
