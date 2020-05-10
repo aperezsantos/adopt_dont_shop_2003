@@ -63,39 +63,4 @@ RSpec.describe "Shelters Index Page", type: :feature do
       expect(current_path).to eq("/shelters")
     end
   end
-
-# User Story 20, Shelter Index Link
-#
-# As a visitor
-# When I visit any page on the site
-# Then I see a link at the top of the page that takes me to the Shelter Index
-
-# User Story 19, Pet Index Link
-#
-# As a visitor
-# When I visit any page on the site
-# Then I see a link at the top of the page that takes me to the Pet Index
-#
-
-# User Story 17, Shelter Links
-#
-# As a visitor
-# When I click on the name a shelter anywhere on the site
-# Then that link takes me to that Shelter's show page
-
-# User Story 14, Shelter Delete From Shelter Index Page
-#
-# As a visitor
-# When I visit the shelter index page
-# Next to every shelter, I see a link to delete that shelter
-# When I click the link
-# I am returned to the Shelter Index Page where I no longer see that shelter
-
-#   User Story 13, Shelter Update From Shelter Index Page
-#
-#   As a visitor
-#   When I visit the shelter index page
-#   Next to every shelter, I see a link to edit that shelter's info
-#   When I click the link
-#   I should be taken to that shelters edit page where I can update its information just like in User Story 5
 end

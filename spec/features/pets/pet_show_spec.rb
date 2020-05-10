@@ -75,18 +75,4 @@ RSpec.describe "Pet Show Page", type: :feature do
       expect(current_path).to eq("/shelters")
     end
   end
-
-# User Story 20, Shelter Index Link
-#
-# As a visitor
-# When I visit any page on the site
-# Then I see a link at the top of the page that takes me to the Shelter Index
-
-# User Story 19, Pet Index Link
-#
-# As a visitor
-# When I visit any page on the site
-# Then I see a link at the top of the page that takes me to the Pet Index
-#
-
 end

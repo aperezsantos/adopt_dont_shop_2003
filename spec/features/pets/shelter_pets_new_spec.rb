@@ -61,37 +61,4 @@ RSpec.describe "Shelter Pets Index", type: :feature do
       expect(current_path).to eq("/shelters")
     end
   end
-
-# User Story 20, Shelter Index Link
-#
-# As a visitor
-# When I visit any page on the site
-# Then I see a link at the top of the page that takes me to the Shelter Index
-
-# User Story 19, Pet Index Link
-#
-# As a visitor
-# When I visit any page on the site
-# Then I see a link at the top of the page that takes me to the Pet Index
-#
-#
-# User Story 18, Pet Links
-#
-# As a visitor
-# When I click on the name a pet anywhere on the site
-# Then that link takes me to that Pet's show page
-
-# User Story 17, Shelter Links
-#
-# As a visitor
-# When I click on the name a shelter anywhere on the site
-# Then that link takes me to that Shelter's show page
-
-# User Story 15, Pet Update From Pets Index Page
-#
-# As a visitor
-# When I visit the pets index page or a shelter pets index page
-# Next to every pet, I see a link to edit that pet's info
-# When I click the link
-# I should be taken to that pets edit page where I can update its information just like in User Story 11
 end
