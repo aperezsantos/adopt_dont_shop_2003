@@ -39,8 +39,32 @@ RSpec.describe "Pets Index Page", type: :feature do
       click_on @simba.name
       expect(current_path).to eq("/pets/#{@simba.id}")
     end
+
+    it "I see a Pets Index link" do
+      visit "/pets"
+      click_link "Navigate to Pets Index"
+      expect(current_path).to eq("/pets")
+    end
+
+    it "I see a Shelters Index link" do
+      visit "/pets"
+      click_link "Navigate to Shelters Index"
+      expect(current_path).to eq("/shelters")
+    end
   end
-  
+
+# User Story 20, Shelter Index Link
+#
+# As a visitor
+# When I visit any page on the site
+# Then I see a link at the top of the page that takes me to the Shelter Index
+
+# User Story 19, Pet Index Link
+#
+# As a visitor
+# When I visit any page on the site
+# Then I see a link at the top of the page that takes me to the Pet Index
+
 # User Story 18, Pet Links
 #
 # As a visitor

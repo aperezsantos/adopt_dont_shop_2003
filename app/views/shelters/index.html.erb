@@ -1,5 +1,6 @@
+<%= link_to "Navigate to Pets Index", "/pets" %> -
+<%= link_to "Navigate to Shelters Index", "/shelters" %>
 <h1>All Shelters</h1>
-
 <% @shelters.each do |shelter| %>
   <h3>
     <%= link_to "#{shelter.name}", "/shelters/#{shelter.id}" %>

@@ -54,5 +54,39 @@ RSpec.describe "Pet Show Page", type: :feature do
       expect(current_path).to eq("/pets")
       expect(page).to_not have_content(simba.name)
     end
+
+    it "I see a Pets Index link" do
+      shelter = Shelter.create(name: "Cat Care Society", address: "5787 W 6th Ave", city: "Lakewood", state: "CO", zip: "80214")
+
+      simba = shelter.pets.create(image: "https://images.pexels.com/photos/736532/pexels-photo-736532.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260", name: "Simba", age: "2", sex: "M", description: "His love of life and curiosity are so contagious, you'll find yourself wanting to explore the world by his side.", adoption_status: "Pending")
+
+      visit "/pets/#{simba.id}"
+      click_link "Navigate to Pets Index"
+      expect(current_path).to eq("/pets")
+    end
+
+    it "I see a Shelters Index link" do
+      shelter = Shelter.create(name: "Cat Care Society", address: "5787 W 6th Ave", city: "Lakewood", state: "CO", zip: "80214")
+
+      simba = shelter.pets.create(image: "https://images.pexels.com/photos/736532/pexels-photo-736532.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260", name: "Simba", age: "2", sex: "M", description: "His love of life and curiosity are so contagious, you'll find yourself wanting to explore the world by his side.", adoption_status: "Pending")
+
+      visit "/pets/#{simba.id}"
+      click_link "Navigate to Shelters Index"
+      expect(current_path).to eq("/shelters")
+    end
   end
+
+# User Story 20, Shelter Index Link
+#
+# As a visitor
+# When I visit any page on the site
+# Then I see a link at the top of the page that takes me to the Shelter Index
+
+# User Story 19, Pet Index Link
+#
+# As a visitor
+# When I visit any page on the site
+# Then I see a link at the top of the page that takes me to the Pet Index
+#
+
 end
