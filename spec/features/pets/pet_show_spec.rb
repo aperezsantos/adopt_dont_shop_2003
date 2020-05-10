@@ -5,8 +5,8 @@ RSpec.describe "Pet Show Page" do
     it "I can see that pet's information, inluding adoption status" do
       shelter_1 = Shelter.create(name: "Cat Care Society", address: "5787 W 6th Ave", city: "Lakewood", state: "CO", zip: "80214")
 
-      bishi = shelter_1.pets.create(name: "Bishi", age: "10", sex: "M", description: "Reserved, but with a mischivous flare about him, he always let's you know what is on his mind.", adoption_status: "Adoptable", image: "https://ih.constantcontact.com/fs159/1104169690227/img/112.jpg?a=1118551010932")
-      simba = shelter_1.pets.create(name: "Simba", age: "2", sex: "M", description: "His love of life and curiosity are so contagious, you'll find yourself wanting to explore the world by his side.", adoption_status: "Pending", image: "https://images.pexels.com/photos/736532/pexels-photo-736532.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260")
+      bishi = shelter_1.pets.create(image: "https://ih.constantcontact.com/fs159/1104169690227/img/112.jpg?a=1118551010932", name: "Bishi", age: "10", sex: "M", description: "Reserved, but with a mischivous flare about him, he always let's you know what is on his mind.", adoption_status: "Adoptable")
+      simba = shelter_1.pets.create(image: "https://images.pexels.com/photos/736532/pexels-photo-736532.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260", name: "Simba", age: "2", sex: "M", description: "His love of life and curiosity are so contagious, you'll find yourself wanting to explore the world by his side.", adoption_status: "Pending")
 
       visit "/pets/#{bishi.id}"
 
@@ -41,8 +41,32 @@ RSpec.describe "Pet Show Page" do
       expect(page).to have_content("Updated Pet Sex")
       expect(page).to have_content("Updated Pet Description")
     end
+
+    it "I can click a link that deletes that pet, taking me to the pets index page" do
+      shelter = Shelter.create(name: "Cat Care Society", address: "5787 W 6th Ave", city: "Lakewood", state: "CO", zip: "80214")
+
+      simba = shelter.pets.create(image: "https://images.pexels.com/photos/736532/pexels-photo-736532.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260", name: "Simba", age: "2", sex: "M", description: "His love of life and curiosity are so contagious, you'll find yourself wanting to explore the world by his side.", adoption_status: "Pending")
+
+      visit "/pets/#{simba.id}"
+
+      click_link "Delete Pet"
+
+      expect(current_path).to eq("/pets")
+      expect(page).to_not have_content(simba.name)
+    end
   end
 end
+
+# User Story 12, Pet Delete
+#
+# As a visitor
+# When I visit a pet show page
+# Then I see a link to delete the pet "Delete Pet"
+# When I click the link
+# Then a 'DELETE' request is sent to '/pets/:id',
+# the pet is deleted,
+# and I am redirected to the pet index page where I no longer see this pet
+
 
 # User Story 11, Pet Update
 #
