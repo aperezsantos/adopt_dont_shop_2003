@@ -31,6 +31,12 @@ RSpec.describe "Shelter Pets Index", type: :feature do
       expect(page).to have_content(new_pet.adoption_status)
     end
 
+    it "I see an edit link next to each pet" do
+      visit "/shelters/#{@shelter.id}/pets"
+
+      expect(page).to have_link("Edit Pet")
+    end
+
     it "I see that each shelter title is a link to its show page " do
       visit "/shelters/#{@shelter.id}/pets"
       click_link @shelter.name
@@ -80,4 +86,12 @@ RSpec.describe "Shelter Pets Index", type: :feature do
 # As a visitor
 # When I click on the name a shelter anywhere on the site
 # Then that link takes me to that Shelter's show page
+
+# User Story 15, Pet Update From Pets Index Page
+#
+# As a visitor
+# When I visit the pets index page or a shelter pets index page
+# Next to every pet, I see a link to edit that pet's info
+# When I click the link
+# I should be taken to that pets edit page where I can update its information just like in User Story 11
 end

@@ -5,7 +5,7 @@
 <% @pets.each do |pet| %>
   <h3>
     Pet: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
-    - <%= link_to "Edit Pet", "/pets/#{pet.id}" %>
+    - <%= link_to "Edit Pet", "/pets/#{pet.id}/edit" %>
     - <%= link_to "Delete Pet", "/pets/#{pet.id}", method: :delete %>
   </h3>
   <img src="<%= pet.image %>" width="150" height="120">
