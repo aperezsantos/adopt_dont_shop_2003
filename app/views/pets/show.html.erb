@@ -6,3 +6,5 @@
 <p>Sex: <%= @pet.sex %></p>
 <p>Description: <%= @pet.description %></p>
 <p>Adoption Status: <%= @pet.adoption_status %></p>
+
+<%= link_to "Update Pet", "/pets/#{@pet.id}/edit" %>
