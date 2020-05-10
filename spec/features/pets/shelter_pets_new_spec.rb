@@ -2,13 +2,15 @@ require 'rails_helper'
 
 RSpec.describe "Shelter Pets Index", type: :feature do
   describe "when I visit a shelters pets index page" do
+    before(:each) do
+      @shelter = Shelter.create(name: "Foothils Animal Shelter", address: "580 McIntyre St", city: "Golden", state: "CO", zip: "80401")
+
+      @starla = @shelter.pets.create(image: "https://images.pexels.com/photos/1605481/pexels-photo-1605481.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260", name: "Starla", age: "18", sex: "F", adoption_status: "Pending")
+      @jasper = @shelter.pets.create(image: "https://images.pexels.com/photos/1543793/pexels-photo-1543793.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260", name: "Jasper", age: "11", sex: "M", adoption_status: "Adoptable")
+    end
+
     it "I can click on a link that lets me add a new adoptable pet for that shelter" do
-      shelter = Shelter.create(name: "Foothils Animal Shelter", address: "580 McIntyre St", city: "Golden", state: "CO", zip: "80401")
-
-      starla = shelter.pets.create(image: "https://images.pexels.com/photos/1605481/pexels-photo-1605481.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260", name: "Starla", age: "18", sex: "F", adoption_status: "Pending")
-      jasper = shelter.pets.create(image: "https://images.pexels.com/photos/1543793/pexels-photo-1543793.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260", name: "Jasper", age: "11", sex: "M", adoption_status: "Adoptable")
-
-      visit "/shelters/#{shelter.id}/pets/new"
+      visit "/shelters/#{@shelter.id}/pets/new"
 
       fill_in "image", with: "http://1.bp.blogspot.com/-FN50PT1n9KA/Ui5RgNJMTBI/AAAAAAAAeyk/Ns7K6hjkKWQ/s1600/IMG_9531_1_1-731935.JPG"
       fill_in "name", with: "New Pet Name"
@@ -21,12 +23,36 @@ RSpec.describe "Shelter Pets Index", type: :feature do
 
       new_pet = Pet.last
 
-      expect(current_path).to eq("/shelters/#{shelter.id}/pets")
+      expect(current_path).to eq("/shelters/#{@shelter.id}/pets")
       expect(page).to have_content(new_pet.name)
       expect(page).to have_content(new_pet.age)
       expect(page).to have_content(new_pet.sex)
       expect(page).to have_content(new_pet.description)
       expect(page).to have_content(new_pet.adoption_status)
     end
+
+    it "I see that each shelter title is a link to its show page " do
+      visit "/shelters/#{@shelter.id}/pets"
+      click_link @shelter.name
+      expect(current_path).to eq("/shelters/#{@shelter.id}")
+    end
+
+    it "I see that each pet title is a link to its show page " do
+      visit "/shelters/#{@shelter.id}/pets"
+      click_link @jasper.name
+      expect(current_path).to eq("/pets/#{@jasper.id}")
+    end
   end
+#
+# User Story 18, Pet Links
+#
+# As a visitor
+# When I click on the name a pet anywhere on the site
+# Then that link takes me to that Pet's show page
+
+# User Story 17, Shelter Links
+#
+# As a visitor
+# When I click on the name a shelter anywhere on the site
+# Then that link takes me to that Shelter's show page
 end

@@ -44,7 +44,19 @@ RSpec.describe "Shelters Index Page", type: :feature do
 
       expect(page).to have_link("Delete Shelter")
     end
+
+    it "I see that each shelter title is a link to its show page" do
+      visit "/shelters"
+      click_on @shelter_2.name
+      expect(current_path).to eq("/shelters/#{@shelter_2.id}")
+    end
   end
+
+# User Story 17, Shelter Links
+#
+# As a visitor
+# When I click on the name a shelter anywhere on the site
+# Then that link takes me to that Shelter's show page
 
 # User Story 14, Shelter Delete From Shelter Index Page
 #

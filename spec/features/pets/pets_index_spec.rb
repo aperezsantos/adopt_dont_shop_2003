@@ -33,7 +33,19 @@ RSpec.describe "Pets Index Page", type: :feature do
 
       expect(page).to have_link("Delete Pet")
     end
+
+    it "I see that each pet title is a link to its show page " do
+      visit "/pets"
+      click_on @simba.name
+      expect(current_path).to eq("/pets/#{@simba.id}")
+    end
   end
+  
+# User Story 18, Pet Links
+#
+# As a visitor
+# When I click on the name a pet anywhere on the site
+# Then that link takes me to that Pet's show page
 
 # User Story 16, Pet Delete From Pets Index Page
 #

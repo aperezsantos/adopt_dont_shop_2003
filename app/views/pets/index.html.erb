@@ -2,7 +2,7 @@
 
 <% @pets.each do |pet| %>
   <h3>
-    Pet: <%= pet.name %>
+    Pet: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
     - <%= link_to "Edit Pet", "/pets/#{pet.id}" %>
     - <%= link_to "Delete Pet", "/pets/#{pet.id}", method: :delete %>
   </h3>
@@ -10,6 +10,6 @@
   <ul>
     <li>Approximate Age: <%= pet.age %></li>
     <li>Sex: <%= pet.sex %></li>
-    <li>Located at: <%= pet.shelter.name %></li>
+    <li>Located at: <%= link_to "#{pet.shelter.name}", "/shelters/#{pet.shelter.id}" %></li>
   </ul>
 <% end %>
