@@ -67,7 +67,22 @@ RSpec.describe "Shelter Show Page", type: :feature do
       click_link "Navigate to Shelters Index"
       expect(current_path).to eq("/shelters")
     end
+
+    it "I see a Shelter Pets Index link" do
+      shelter = Shelter.create(name: "Cat Care Society", address: "5787 W 6th Ave", city: "Lakewood", state: "CO", zip: "80214")
+
+      visit "/shelters/#{shelter.id}"
+      click_link "Navigate to Shelter Pets Index"
+      expect(current_path).to eq("/shelters/#{shelter.id}/pets")
+    end
   end
+
+
+# User Story 21, Shelter Pet Index Link
+#
+# As a visitor
+# When I visit a shelter show page ('/shelters/:id')
+# Then I see a link to take me to that shelter's pets page ('/shelters/:id/pets')
 
 # User Story 20, Shelter Index Link
 #
