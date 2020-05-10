@@ -32,5 +32,70 @@ RSpec.describe "Shelters Index Page", type: :feature do
       expect(current_path).to eq("/shelters")
       expect(page).to have_content("New Shelter Name")
     end
+
+    it "I see an edit link next to each shelter" do
+      visit "/shelters"
+
+      expect(page).to have_link("Edit Shelter")
+    end
+
+    it "I see a delete link next to each shelter" do
+      visit "/shelters"
+
+      expect(page).to have_link("Delete Shelter")
+    end
+
+    it "I see that each shelter title is a link to its show page" do
+      visit "/shelters"
+      click_link @shelter_2.name
+      expect(current_path).to eq("/shelters/#{@shelter_2.id}")
+    end
+
+    it "I see a Pets Index link" do
+      visit '/shelters'
+      click_link "Navigate to Pets Index"
+      expect(current_path).to eq("/pets")
+    end
+
+    it "I see a Shelters Index link" do
+      visit '/shelters'
+      click_link "Navigate to Shelters Index"
+      expect(current_path).to eq("/shelters")
+    end
   end
+
+# User Story 20, Shelter Index Link
+#
+# As a visitor
+# When I visit any page on the site
+# Then I see a link at the top of the page that takes me to the Shelter Index
+
+# User Story 19, Pet Index Link
+#
+# As a visitor
+# When I visit any page on the site
+# Then I see a link at the top of the page that takes me to the Pet Index
+#
+
+# User Story 17, Shelter Links
+#
+# As a visitor
+# When I click on the name a shelter anywhere on the site
+# Then that link takes me to that Shelter's show page
+
+# User Story 14, Shelter Delete From Shelter Index Page
+#
+# As a visitor
+# When I visit the shelter index page
+# Next to every shelter, I see a link to delete that shelter
+# When I click the link
+# I am returned to the Shelter Index Page where I no longer see that shelter
+
+#   User Story 13, Shelter Update From Shelter Index Page
+#
+#   As a visitor
+#   When I visit the shelter index page
+#   Next to every shelter, I see a link to edit that shelter's info
+#   When I click the link
+#   I should be taken to that shelters edit page where I can update its information just like in User Story 5
 end

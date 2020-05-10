@@ -1,3 +1,6 @@
+<%= link_to "Navigate to Pets Index", "/pets" %> -
+<%= link_to "Navigate to Shelters Index", "/shelters" %> -
+<%= link_to "Navigate to Shelter Pets Index", "/shelters/#{@shelter.id}/pets" %>
 <h1><%= @shelter.name %></h1>
 
 <p>Address: <%= @shelter.address %></p>
