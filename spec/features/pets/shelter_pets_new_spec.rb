@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Shelter Pets Index" do
+RSpec.describe "Shelter Pets Index", type: :feature do
   describe "when I visit a shelters pets index page" do
     it "I can click on a link that lets me add a new adoptable pet for that shelter" do
       shelter = Shelter.create(name: "Foothils Animal Shelter", address: "580 McIntyre St", city: "Golden", state: "CO", zip: "80401")
