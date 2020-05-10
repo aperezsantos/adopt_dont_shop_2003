@@ -1,0 +1,11 @@
+<h1>Pets Index</h1>
+
+<% @pets.each do |pet| %>
+  <h3>Pet: <%= pet.name %></h3>
+  <img src="<%= pet.image %>" width="150" height="120">
+  <ul>
+    <li>Approximate Age: <%= pet.age %></li>
+    <li>Sex: <%= pet.sex %></li>
+    <li>Located at: <%= pet.shelter.name %></li>
+  </ul>
+<% end %>

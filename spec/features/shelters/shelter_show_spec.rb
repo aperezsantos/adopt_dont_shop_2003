@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Shelter Show Page" do
+RSpec.describe "Shelter Show Page", type: :feature do
   describe "as a visitor when I visit a shelter's show page" do
     it "I can see that shelter's name and location information" do
       shelter_1 = Shelter.create(name: "Cat Care Society", address: "5787 W 6th Ave", city: "Lakewood", state: "CO", zip: "80214")
